@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+
+    "name": "LOR Notifier",
+    "author": "Sergej Suvorov",
+    "description": "Display the number of unread notifications from linux.org.ru.",
+    "version": "0.1.0",
+
+    "browser_action": {
+        "default_title": "LOR Notifier",
+        "default_icon": "images/default_icon.png"
+    },
+
+    "icons": {
+        "128": "images/default_128x128_icon.png"
+    },
+
+    "background": {
+        "scripts": ["background.js"]
+    },
+
+    "permissions": [
+        "tabs",
+        "alarms",
+        "https://*.linux.org.ru/", "http://*.linux.org.ru/"
+
+    ]
+}
