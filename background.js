@@ -7,6 +7,12 @@ var data = {
 
 }
 
+var f = (function() { alert("Func") })();
+
+var storage = function() {
+    localStorage.setItem("minute", data.timeAlarm);
+    return parseInt(localStorage.getItem("minute"));
+}
 
 var getmsgcounter = function(callback) {
     var xhr = new XMLHttpRequest();
@@ -16,7 +22,9 @@ var getmsgcounter = function(callback) {
         if (xhr.readyState == 4) {
             if (xhr.status == 403) {
                 alert('Please authorize on linux.org.ru');
-		chrome.tabs.create({url: data.loginUrl});
+                chrome.tabs.create({
+                    url: data.loginUrl
+                });
             }
             if (xhr.status == 200) {
                 callback(xhr.responseText);
@@ -31,13 +39,21 @@ var getmsgcounter = function(callback) {
 
 var updateicon = function() {
     getmsgcounter(function(response) {
-	if (response > 0) {
-	    chrome.browserAction.setIcon({path: "images/unread_notification_icon.png"});
-	    chrome.browserAction.setBadgeText({text : response});
-	} else {
-	     chrome.browserAction.setBadgeText({text : ""});
-	     chrome.browserAction.setIcon({path:"images/default_icon.png"});
-	}
+        if (response > 0) {
+            chrome.browserAction.setIcon({
+                path: "images/unread_notification_icon.png"
+            });
+            chrome.browserAction.setBadgeText({
+                text: response
+            });
+        } else {
+            chrome.browserAction.setBadgeText({
+                text: ""
+            });
+            chrome.browserAction.setIcon({
+                path: "images/default_icon.png"
+            });
+        }
     });
 }
 
@@ -51,7 +67,7 @@ function opennewtab() {
 chrome.browserAction.onClicked.addListener(opennewtab);
 
 chrome.alarms.create(data.alarmName, {
-    'periodInMinutes': data.timeAlarm
+    'periodInMinutes': storage()
 });
 
 function alarmListener(alarm) {

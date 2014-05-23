@@ -5,6 +5,7 @@
     "author": "Sergej Suvorov",
     "description": "Display the number of unread notifications from linux.org.ru.",
     "version": "0.1.0",
+    "options_page": "options.html",
 
     "browser_action": {
         "default_title": "LOR Notifier",
