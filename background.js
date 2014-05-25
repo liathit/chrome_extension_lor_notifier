@@ -21,7 +21,6 @@ var getmsgcounter = function(callback) {
             if (xhr.status == 403) {
 		nologin();
 	    }
-
             if (xhr.status == 200) {
                 callback(xhr.responseText);
             } else {
@@ -54,7 +53,7 @@ var updateicon = function() {
             chrome.browserAction.setIcon({
                 path: "images/unread_notification_icon.png"
             });
-	    chrome.browserAction.setBadgeBackgroundColor({color: "#ff6729"}); 
+	    chrome.browserAction.setBadgeBackgroundColor({color: "#e74b3b"}); 
     
             chrome.browserAction.setBadgeText({
                 text: response
