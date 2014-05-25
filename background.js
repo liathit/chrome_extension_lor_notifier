@@ -86,7 +86,7 @@ chrome.alarms.create(data.alarmName, {
 function alarmListener(alarm) {
     if (alarm.name == data.alarmName) {
         updateicon();
-        console.log("Service load: " + alert.name);
+        //console.log("Service load: " + alert.name);
     } else {
         console.error("Alarm err");
     }
