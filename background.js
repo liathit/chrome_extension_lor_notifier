@@ -63,7 +63,7 @@ var updateicon = function() {
 		chrome.browserAction.onClicked.removeListener(listenerLogin);
 		chrome.browserAction.onClicked.addListener(listenerNotify);
 	    }
-	    chrome.browserAction.setTitle({title:"No unred notifications"});
+	    chrome.browserAction.setTitle({title:"No unread notifications"});
             chrome.browserAction.setBadgeText({
                 text: ""
             });
