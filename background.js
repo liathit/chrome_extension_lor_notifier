@@ -25,7 +25,7 @@ var getmsgcounter = function(callback) {
             if (xhr.status == 200) {
                 callback(xhr.responseText);
             } else {
-                console.error("Error");
+                console.error("Not signed in");
             }
         }
     }
@@ -41,9 +41,7 @@ var nologin = function() {
 	    chrome.browserAction.onClicked.removeListener(listenerNotify)
 	    chrome.browserAction.onClicked.addListener(listenerLogin);
 	}
-
-	alert("Listener removed");
-}
+    }
 
 var updateicon = function() {
     getmsgcounter(function(response) {
@@ -79,14 +77,6 @@ var updateicon = function() {
 
 var listenerLogin = function() {chrome.tabs.create({url: data.loginUrl})};
 var listenerNotify = function() {chrome.tabs.create({url: data.checkMsgUrl})};
-
-/*
-function opennewtab() {
-    chrome.tabs.create({
-        url: data.checkMsgUrl
-    });
-}
-*/
 
 chrome.browserAction.onClicked.addListener(listenerNotify);
 
